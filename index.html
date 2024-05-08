@@ -15,25 +15,28 @@
             <h1 class="my-5">Sign Me</h1>
 
             <div class="d-flex my-3 align-items-center">
-                <div class="d-flex justify-content-center mx-4">
+                <div class="d-flex flex-column justify-content-center mx-4">
                     <label for="background" class="me-2">Background Color</label>
-                    <input type="color" id="background">
+                    <input type="color" id="background" class="up-btns">
                 </div>
-                <div class="d-flex justify-content-center mx-4">
+                <div class="d-flex flex-column justify-content-center mx-4">
                     <label for="sign" class="me-2">Signature Color</label>
-                    <input type="color" id="sign">
+                    <input type="color" id="sign" class="up-btns">
                 </div>
-
-                <div class="dropdown mx-4">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Dropdown button
-                    </button>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
+                <div class="d-flex flex-column mx-4">
+                    <label for="drop">Font Size</label>
+                    <div class="dropdown" id="drop">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Dropdown button
+                        </button>
+                        <ul class="dropdown-menu up-btns">
+                          <li><a class="dropdown-item" href="#">Action</a></li>
+                          <li><a class="dropdown-item" href="#">Another action</a></li>
+                          <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </div>
                 </div>
+                
             </div>
             
 
