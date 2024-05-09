@@ -17,24 +17,35 @@
             <div class="d-flex my-3 align-items-center">
                 <div class="d-flex flex-column justify-content-center mx-4">
                     <label for="background" class="me-2">Background Color</label>
-                    <input type="color" id="background" class="up-btns">
+                    <input type="color" id="background" class="up-btns" value="#ffffff" onchange="background()">
                 </div>
                 <div class="d-flex flex-column justify-content-center mx-4">
                     <label for="sign" class="me-2">Signature Color</label>
-                    <input type="color" id="sign" class="up-btns">
+                    <input type="color" id="sign" class="up-btns" value="#ffffff" onchange="fontcolor()">
                 </div>
                 <div class="d-flex flex-column mx-4">
                     <label for="drop">Font Size</label>
                     <div class="dropdown" id="drop">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Dropdown button
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="true" value="5px" id="dropdownInput">
+                          5px
                         </button>
                         <ul class="dropdown-menu up-btns">
-                          <li><a class="dropdown-item" href="#">Action</a></li>
-                          <li><a class="dropdown-item" href="#">Another action</a></li>
-                          <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li><a class="dropdown-item" onclick="selectOption('10px')">10px</a></li>
+                            <li><a class="dropdown-item" onclick="selectOption('20px')">20px</a></li>
+                            <li><a class="dropdown-item" onclick="selectOption('30px')">30px</a></li>
                         </ul>
                     </div>
+
+                    <!-- <div class="dropdown" id="drop">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" value="5px" id="dropdownInput" onclick="toggleOption()">
+                          5px
+                        </button>
+                        <ul id="dropdownList" class="dropdown-menu">
+                          <li><a class="dropdown-item" onclick="selectOption('10px')">10px</a></li>
+                          <li><a class="dropdown-item" onclick="selectOption('20px')">20px</a></li>
+                          <li><a class="dropdown-item" onclick="selectOption('30px')">30px</a></li>
+                        </ul>
+                    </div> -->
                 </div>
                 
             </div>
@@ -61,6 +72,31 @@
         
     </div>
 </body>
+
+<script>
+    
+    // to change background color value
+    function background(){
+        let bg_code = document.getElementById("background");
+        let color = bg_code.value
+        bg_code.setAttribute('value', color);
+    }
+
+    // to change font color value
+    function fontcolor(){
+        let fc_code = document.getElementById("sign");
+        let fc = fc_code.value
+        fc_code.setAttribute('value', fc);
+    }
+
+    
+    // to change font size value
+    function selectOption(option){
+        let dropdownValue = document.getElementById("dropdownInput");
+        dropdownValue.innerHTML = option;
+        dropdownValue.value = option;
+    }
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>
