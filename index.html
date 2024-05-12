@@ -11,21 +11,22 @@
 </head>
 <body>
     <div class="container">
-        <div class="d-flex flex-column align-items-center">
-            <h1 class="my-5">Sign Me</h1>
+        <h1 class="my-5">Sign Me</h1>
+        <div class="d-flex cont-full">
+            
 
-            <div class="d-flex my-3 align-items-center">
-                <div class="d-flex flex-column justify-content-center mx-4">
+            <div class="my-3 pe-3 col-lg-3">
+                <div class="my-3">
                     <label for="background" class="me-2">Background Color</label>
                     <input type="color" id="background" class="up-btns" value="#ffffff" onchange="background()">
                 </div>
-                <div class="d-flex flex-column justify-content-center mx-4">
-                    <label for="sign" class="me-2">Signature Color</label>
+                <div class="my-3">
+                    <label for="sign" class="me-2 sign-label">Signature Color</label>
                     <input type="color" id="sign" class="up-btns" value="#ffffff" onchange="fontcolor()">
                 </div>
-                <div class="d-flex flex-column mx-4">
-                    <label for="drop">Font Size</label>
-                    <div class="dropdown" id="drop">
+                <div class="my-3">
+                    <label for="dropdownInput">Font Size</label>
+                    <div class="dropdown" >
                         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="true" value="5px" id="dropdownInput">
                           5px
                         </button>
@@ -47,55 +48,96 @@
                         </ul>
                     </div> -->
                 </div>
-                
+                <div class="d-flex flex-column my-3">
+                    <div class="my-2">                    
+                       <button type="button" class="btn btn-primary btns" id="clearBtn">clear</button>
+                    </div>
+                    <div class="my-2">
+                        <button type="button" class="btn btn-secondary btns" id="savedownBtn">save and download</button>
+                    </div>
+        
+                    <div class="my-2">
+                        <button type="button" class="btn btn-warning btns" id="preBtn">Retrieve previous signature</button>
+                    </div>
+                </div>
+        
             </div>
             
 
 
-            <textarea name="signarea" id="sign-area"></textarea>
 
+            <canvas class="col-lg-9 ps-0 pe-3" name="signarea" id="sign-area" width="800" height="400">
 
+            </canvas>
           
-            <div class="d-flex my-3">
-                <div class="mx-4">                    
-                   <button type="button" class="btn btn-primary btns">clear</button>
-                </div>
-                <div class="mx-4">
-                    <button type="button" class="btn btn-secondary btns">save and download</button>
-                </div>
-    
-                <div class="mx-4">
-                    <button type="button" class="btn btn-warning btns">Retrieve previous signature</button>
-                </div>
-            </div>
-    
+        </div> 
         
     </div>
 </body>
 
 <script>
-    
-    // to change background color value
-    function background(){
-        let bg_code = document.getElementById("background");
-        let color = bg_code.value
-        bg_code.setAttribute('value', color);
-    }
+    const bg_code = document.getElementById("background");
+    const fc_code = document.getElementById("sign");
+    const fontsize = document.getElementById("dropdownInput");
 
-    // to change font color value
-    function fontcolor(){
-        let fc_code = document.getElementById("sign");
-        let fc = fc_code.value
-        fc_code.setAttribute('value', fc);
-    }
+    const canvas = document.getElementById("sign-area");
+    const clear = document.getElementById("clearBtn");
+    const save = document.getElementById("savedownBtn");
+    const re = document.getElementById("preBtn");
 
-    
-    // to change font size value
+    let canv = canvas.getContext("2d");
+
     function selectOption(option){
-        let dropdownValue = document.getElementById("dropdownInput");
-        dropdownValue.innerHTML = option;
-        dropdownValue.value = option;
+        fontsize.value = option;
+        fontsize.innerHTML = option
     }
+
+    fc_code.addEventListener('change', (e)=>{
+        canv.strokeStyle = e.target.value;
+        canv.fillStyle = e.target.value;
+    })
+
+    bg_code.addEventListener('change', (e)=>{
+        canv.fillStyle = e.target.value;
+        canv.fillRect(0,0,800,400);
+    })
+
+    fontsize.addEventListener('change', (e)=>{
+        canv.lineWidth = e.target.value;
+    })
+
+    canvas.addEventListener('mousedown', (e) =>{
+        isDrawing = true;
+        lastX = event.offsetX;
+        lastY = event.offsetY;
+        
+    })
+
+    canvas.addEventListener('mousemove', (e)=>{
+        if(isDrawing){
+            canv.beginPath();
+            canv.moveTo(lastX, lastY);
+            canv.lineTo(event.offsetX, event.offsetY);
+            canv.stroke();
+
+            lastX = event.offsetX;
+            lastY = event.offsetY;
+        }
+    })
+
+    canvas.addEventListener('mouseup', (e)=>{
+        isDrawing = false;
+    })
+
+
+    clear.addEventListener('click', (e)=> {
+        canv.clearRect(0,0,canvas.width,canvas.height);
+    })
+    
+
+
+
+
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

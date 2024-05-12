@@ -1,20 +1,33 @@
 #sign-area{
     resize: none;
-    width: 800px;
-    height: 500px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
 }
 
 .btns{
     width: 230px;
 }
 
+.sign-label{
+    margin-right: 17px;
+}
+
 .up-btns{
-    width: 250px;
-    padding: 5px;
+    width: 50px;
+    padding: 3px;
 }
 
 @media screen and (max-width: 480px){
-    #sign-area{
-        width: 300px;
+    .cont-full{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .up-btns{
+        width: 60%;
+    }
+
+    .btns{
+        width: 100%;
     }
 }
