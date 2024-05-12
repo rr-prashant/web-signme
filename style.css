@@ -9,25 +9,47 @@
 }
 
 .sign-label{
-    margin-right: 17px;
+    margin-right: 24px;
 }
 
 .up-btns{
-    width: 50px;
+    width: 90px;
     padding: 3px;
 }
 
-@media screen and (max-width: 480px){
+.fn-size{
+    margin-right: 74px;
+}
+
+.size-btn{
+    width: 90px;
+}
+
+
+@media screen and (max-width: 768px){
+    .sub-cont{
+        margin: 30px;
+    }
     .cont-full{
         display: flex;
         flex-direction: column;
     }
 
     .up-btns{
-        width: 60%;
+        width: 50%;
+    }
+
+    .size-btn{
+        width: 90%;
     }
 
     .btns{
         width: 100%;
+    }
+}
+
+@media screen and (max-width: 399px){
+    .up-btns{
+        width: 35%;
     }
 }

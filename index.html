@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <h1 class="my-5">Sign Me</h1>
-        <div class="d-flex cont-full">
+        <div class="d-flex cont-full sub-cont">
             
 
             <div class="my-3 pe-3 col-lg-3">
@@ -21,13 +21,13 @@
                     <input type="color" id="background" class="up-btns" value="#ffffff" onchange="background()">
                 </div>
                 <div class="my-3">
-                    <label for="sign" class="me-2 sign-label">Signature Color</label>
-                    <input type="color" id="sign" class="up-btns" value="#ffffff" onchange="fontcolor()">
+                    <label for="sign" class="sign-label">Signature Color</label>
+                    <input type="color" id="sign" class="up-btns" value="#003230" onchange="fontcolor()">
                 </div>
-                <div class="my-3">
-                    <label for="dropdownInput">Font Size</label>
+                <div class="d-flex my-3">
+                    <label for="dropdownInput" class="fn-size">Font Size</label>
                     <div class="dropdown" >
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="true" value="5px" id="dropdownInput">
+                        <button class="btn btn-secondary dropdown-toggle size-btn" type="button" data-bs-toggle="dropdown" aria-expanded="true" value="5px" id="dropdownInput">
                           5px
                         </button>
                         <ul class="dropdown-menu up-btns">
@@ -132,6 +132,29 @@
 
     clear.addEventListener('click', (e)=> {
         canv.clearRect(0,0,canvas.width,canvas.height);
+    })
+
+    save.addEventListener('click', (e)=>{
+        localStorage.setItem('SignaturedItems', canvas.toDataURL());
+
+        let link = document.createElement('a');
+
+        link.download = 'my-canvas.png';
+
+        link.href = canvas.toDataURL();
+
+        link.click();
+    })
+
+    re.addEventListener('click', (e)=>{
+        let savedSign = localStorage.getItem('SignaturedItems');
+
+        if (savedSign){
+            let img = new Image;
+            img.src = savedSign;
+            canv.drawImage(img,0,0);
+        
+        }
     })
     
 
