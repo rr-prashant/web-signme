@@ -1,7 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Teachers:ital,wght@0,400..800;1,400..800&display=swap');
+
+
+
 #sign-area{
     resize: none;
     border: 1px solid #ccc;
     margin-bottom: 20px;
+}
+
+.title{
+    font-family: "Teachers", sans-serif;
+    font-size: 50px;
+}
+
+.canvas-rect{
+    border-radius: 10px;
+    box-shadow:
+  0.1px 0.2px 0.7px rgba(0, 0, 0, 0.028),
+  0.3px 0.4px 1.8px rgba(0, 0, 0, 0.04),
+  0.7px 0.9px 3.7px rgba(0, 0, 0, 0.05),
+  1.5px 1.8px 7.7px rgba(0, 0, 0, 0.062),
+  4px 5px 21px rgba(0, 0, 0, 0.09)
+;
+}
+
+.png{
+    margin: 52px 0 0 10px;
 }
 
 .btns{
@@ -15,6 +39,7 @@
 .up-btns{
     width: 90px;
     padding: 3px;
+    border-radius: 5px;
 }
 
 .fn-size{
@@ -28,11 +53,15 @@
 
 @media screen and (max-width: 768px){
     .sub-cont{
-        margin: 30px;
+        margin: 0 30px 30px 30px;
     }
     .cont-full{
         display: flex;
         flex-direction: column;
+    }
+
+    .title-cont{
+        margin: 80px 0 0 20px;
     }
 
     .up-btns{
